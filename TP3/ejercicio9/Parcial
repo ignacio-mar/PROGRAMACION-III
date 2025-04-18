@@ -1,0 +1,48 @@
+package practica3;
+
+public class Parcial {
+
+public static boolean esDeSeleccion(GeneralTree<Integer> a) {
+	
+	if(a==null || a.isEmpty()) {
+		return false;}
+
+	
+	if(a.getChildren().size()==1 && a.getChildren().get(0).isLeaf()) {
+		if(a.getData()==a.getChildren().get(0).getData()) {
+			return true;
+		}
+		else
+			return false;
+	}
+	else {
+	if(a.isLeaf()) {
+		return true;
+	}else
+	{
+	int min=999999;
+	boolean condicion;
+	for(GeneralTree<Integer> child: a.getChildren()) {
+		if(child.getData()<min) {
+			min=child.getData();
+		}
+		condicion=esDeSeleccion(child);	
+		if(condicion==false) {
+			return false;
+		}
+	}
+	 
+	if(a.getData()==min) {
+		return true;
+	}else
+		return false;
+	
+	}	
+		
+}
+}
+}
+	
+	
+
+
